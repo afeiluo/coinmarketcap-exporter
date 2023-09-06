@@ -24,9 +24,9 @@ log.addHandler(ch)
 
 currency = os.environ.get('CURRENCY', 'USD')
 cak = os.environ.get('COINMARKETCAP_API_KEY')
-# caching API for 170min (every 3 hours)
+# caching API for 30min (every 30 min)
 # Note the api limits: https://pro.coinmarketcap.com/features
-cache_ttl = int(os.environ.get('CACHE_TTL', 10200))
+cache_ttl = int(os.environ.get('CACHE_TTL', 1800))
 cache_max_size = int(os.environ.get('CACHE_MAX_SIZE', 10000))
 cache = TTLCache(maxsize=cache_max_size, ttl=cache_ttl)
 
@@ -35,7 +35,7 @@ class CoinClient():
 
     self.url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
     self.headers = {'Accepts': 'application/json', 'X-CMC_PRO_API_KEY': cak}
-    self.parameters = {'start': '1', 'limit': '5000', 'convert': currency}
+    self.parameters = {'start': '1', 'limit': '1000', 'convert': currency}
 
   @cached(cache)
   def tickers(self):
