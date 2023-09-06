@@ -24,9 +24,9 @@ log.addHandler(ch)
 
 currency = os.environ.get('CURRENCY', 'USD')
 cak = os.environ.get('COINMARKETCAP_API_KEY')
-# caching API for 30min (every 30 min)
+# caching API for 20min (every 20 min)
 # Note the api limits: https://pro.coinmarketcap.com/features
-cache_ttl = int(os.environ.get('CACHE_TTL', 1800))
+cache_ttl = int(os.environ.get('CACHE_TTL', 1200))
 cache_max_size = int(os.environ.get('CACHE_MAX_SIZE', 10000))
 cache = TTLCache(maxsize=cache_max_size, ttl=cache_ttl)
 
